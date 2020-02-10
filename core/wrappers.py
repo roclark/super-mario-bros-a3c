@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from collections import deque
-from gym import make, ObservationWrapper, wrappers, Wrapper
+from gym import make, ObservationWrapper, Wrapper
 from gym.spaces import Box
 from nes_py.wrappers import JoypadSpace
 
@@ -88,10 +88,8 @@ class CustomReward(Wrapper):
         return state, reward / 10.0, done, info
 
 
-def wrap_environment(environment, action_space, monitor=False, iteration=0):
+def wrap_environment(environment, action_space):
     env = make(environment)
-    if monitor:
-        env = wrappers.Monitor(env, 'recording/run%s' % iteration, force=True)
     env = JoypadSpace(env, action_space)
     env = FrameDownsample(env)
     env = ImageToPyTorch(env)
