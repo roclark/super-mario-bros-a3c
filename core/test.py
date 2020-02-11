@@ -76,9 +76,8 @@ def test_loop(env, model, global_model, actions, state, done, args, info,
     return model, hx, cx, state, done, info, episode_reward, flag
 
 
-def determine_result(info, flag, episode_reward):
+def determine_result(best_reward, flag, episode_reward):
     new_best = False
-    best_reward = info.best_reward
     if episode_reward > best_reward or \
        (flag and episode_reward != best_reward):
         new_best = True
@@ -113,10 +112,11 @@ def test(env, global_model, args):
     actions = deque(maxlen=args.max_actions)
 
     while True:
+        best = info.best_reward
         loop_outputs = test_loop(env, model, global_model, actions, state,
                                  done, args, info, episode_reward, hx, cx)
         model, hx, cx, state, done, info, episode_reward, flag = loop_outputs
         if done:
-            save_result = determine_result(info, flag, episode_reward)
+            save_result = determine_result(best, flag, episode_reward)
             episode_reward = 0.0
             handler.new_best = save_result
