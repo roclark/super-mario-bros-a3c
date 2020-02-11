@@ -78,14 +78,14 @@ class CustomReward(Wrapper):
 
     def step(self, action):
         state, reward, done, info = self.env.step(action)
-        reward += (info['score'] - self._current_score) / 40.0
+        reward += (info['score'] - self._current_score) / 100.0
         self._current_score = info['score']
         if done:
             if info['flag_get']:
-                reward += 350.0
+                reward += 50.0
             else:
                 reward -= 50.0
-        return state, reward / 10.0, done, info
+        return state, reward, done, info
 
 
 def wrap_environment(environment, action_space):
