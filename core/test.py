@@ -15,6 +15,7 @@ def complete_episode(environment, info, episode_reward, episode, stats, model,
                      flag):
     new_best = info.update_rewards(episode_reward)
     save_model = False
+    save_flag = False
     if new_best and episode_reward >= info.best_reward:
         print('New high score of %s! Saving model' % round(episode_reward, 3))
         save_model = True
