@@ -73,14 +73,13 @@ def test_loop(env, model, global_model, actions, state, done, args, info,
     return model, hx, cx, state, done, info, episode_reward, flag
 
 
-def determine_result(best_reward, flag, episode_reward):
+def determine_result(info, flag, episode_reward):
     new_best = False
-    if episode_reward > best_reward:
-        best_reward = episode_reward
+    best_reward = info.best_reward
+    if episode_reward > best_reward or \
+       (flag and episode_reward != best_reward):
         new_best = True
-    elif flag and episode_reward != best_reward:
-        new_best = True
-    return best_reward, new_best
+    return new_best
 
 
 class MonitorHandler:
@@ -109,14 +108,12 @@ def test(env, global_model, args):
     hx = None
     cx = None
     actions = deque(maxlen=args.max_actions)
-    best_reward = episode_reward
 
     while True:
         loop_outputs = test_loop(env, model, global_model, actions, state,
                                  done, args, info, episode_reward, hx, cx)
         model, hx, cx, state, done, info, episode_reward, flag = loop_outputs
         if done:
-            best_reward, save_result = determine_result(best_reward, flag,
-                                                        episode_reward)
+            save_result = determine_result(info, flag, episode_reward)
             episode_reward = 0.0
             handler.new_best = save_result
