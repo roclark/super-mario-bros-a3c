@@ -2,9 +2,8 @@ import torch
 from collections import deque
 from glob import glob
 from gym.wrappers import Monitor
-from os import listdir, mkdir, remove
+from os import mkdir
 from os.path import join
-from shutil import move
 from torch.nn.functional import softmax
 from .constants import PRETRAINED_MODELS
 from .model import ActorCritic
@@ -27,6 +26,10 @@ def complete_episode(environment, info, episode_reward, episode, stats, model,
     if save_model:
         torch.save(model.state_dict(),
                    join(PRETRAINED_MODELS, '%s.dat' % environment))
+        mkdir('saved_models/run%s' % episode)
+        torch.save(model.state_dict(),
+                   join('saved_models/run%s' % episode,
+                        '%s.dat' % environment))
     print('Episode %s - Reward: %s, Best: %s, Average: %s'
           % (episode,
              round(episode_reward, 3),
@@ -94,7 +97,7 @@ def test(env, global_model, args):
     env = wrap_environment(args.environment, args.action_space)
     handler = MonitorHandler()
     env = Monitor(env,
-                  'recording/run1',
+                  'recordings/',
                   force=True,
                   video_callable=handler.video_callable)
     model = ActorCritic(env.observation_space.shape[0], env.action_space.n)
