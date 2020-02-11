@@ -67,6 +67,8 @@ def calculate_loss(args, loss_values):
         R = R * args.gamma + reward
         critic_loss = critic_loss + (R - value) ** 2 / 2
         entropy_loss = entropy_loss + entropy
+        # Free up GPU memory by deleting unused tensors
+        del next_value, R, value
 
     total_loss = -actor_loss + critic_loss - args.beta * entropy_loss
     return total_loss
