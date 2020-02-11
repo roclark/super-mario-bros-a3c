@@ -21,11 +21,13 @@ def complete_episode(environment, info, episode_reward, episode, stats, model,
     elif new_best:
         print('New best average reward of %s! Saving model'
               % round(info.best_average, 3))
-    if flag:
+    if flag and info.best_reward != episode_reward:
         save_model = True
+        save_flag = True
     if save_model:
         torch.save(model.state_dict(),
                    join(PRETRAINED_MODELS, '%s.dat' % environment))
+    if save_flag:
         mkdir('saved_models/run%s' % episode)
         torch.save(model.state_dict(),
                    join('saved_models/run%s' % episode,
