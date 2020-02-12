@@ -1,7 +1,7 @@
 import torch
 import torch.multiprocessing as _mp
 from core.argparser import parse_args
-from core.model import ActorCritic
+from core.helpers import initialize_model
 from core.optimizer import GlobalAdam
 from core.test import test
 from core.train import train
@@ -14,8 +14,7 @@ def main():
     mp = _mp.get_context('spawn')
     args = parse_args()
     env = wrap_environment(args.environment, args.action_space)
-    global_model = ActorCritic(env.observation_space.shape[0],
-                               env.action_space.n)
+    global_model = initialize_model(env, args.environment, args.transfer)
     if not args.force_cpu:
         torch.cuda.manual_seed(123)
         global_model.cuda()

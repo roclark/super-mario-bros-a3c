@@ -71,4 +71,8 @@ def parse_args():
                         'lower the learning speed. Default: False')
     parser.add_argument('--tau', type=float, help='The value used to calculate'
                         'GAE. Default: %s' % TAU, default=TAU)
+    parser.add_argument('--transfer', action='store_true', help='Transfer '
+                        'model weights from a previously-trained model to new '
+                        'models for faster learning and improved accuracy. '
+                        'Default: False')
     return parser.parse_args()

@@ -5,7 +5,7 @@ from os import mkdir
 from os.path import join
 from torch.nn.functional import softmax
 from .constants import PRETRAINED_MODELS
-from .model import ActorCritic
+from .helpers import initialize_model
 from .train_information import TrainInformation
 from .wrappers import wrap_environment
 
@@ -110,7 +110,7 @@ def test(env, global_model, args):
     torch.manual_seed(123 + args.num_processes)
     info = TrainInformation()
     env = wrap_environment(args.environment, args.action_space)
-    model = ActorCritic(env.observation_space.shape[0], env.action_space.n)
+    model = initialize_model(env, args.environment, args.transfer)
     model.eval()
 
     state = torch.from_numpy(env.reset())

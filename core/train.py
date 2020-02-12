@@ -1,5 +1,5 @@
 import torch
-from .model import ActorCritic
+from .helpers import initialize_model
 from .wrappers import wrap_environment
 from torch.distributions import Categorical
 from torch.nn.functional import log_softmax, softmax
@@ -8,7 +8,7 @@ from torch.nn.functional import log_softmax, softmax
 def setup_process(rank, args):
     torch.manual_seed(123 + rank)
     env = wrap_environment(args.environment, args.action_space)
-    model = ActorCritic(env.observation_space.shape[0], env.action_space.n)
+    model = initialize_model(env, args.environment, args.transfer)
     state = torch.from_numpy(env.reset())
     if not args.force_cpu:
         torch.cuda.manual_seed(123 + rank)
