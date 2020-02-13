@@ -144,7 +144,9 @@ and the settings used to achieve the indicated performance:
 
 | Level           | Version | Status   | Actions | GIF         |
 |:----------------|:--------|:---------|:--------|:------------|
-| **World 1-1**   | N/A     | Untested | N/A     | N/A         |
+| **World 1-1**   | v0      | Optimal  | Complex | ![][1-1]    |
+
+[1-1]: media/smb-1-1-complete.gif
 
 ### Legend
 The following is a legend of values to decipher the table above.
