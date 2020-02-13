@@ -37,6 +37,9 @@ def record_best_run(model, args, episode):
     env = wrap_environment(args.environment, args.action_space)
     env = Monitor(env, 'recordings/run%s' % episode, force=True,
                   video_callable=record)
+    # Update the framerate to 20 frames per second for a more naturally-paced
+    # playback.
+    env.metadata['video.frames_per_second'] = 20.0
     infer(model, env)
 
 
