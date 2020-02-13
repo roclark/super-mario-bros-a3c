@@ -145,8 +145,12 @@ and the settings used to achieve the indicated performance:
 | Level           | Version | Status   | Actions | GIF         |
 |:----------------|:--------|:---------|:--------|:------------|
 | **World 1-1**   | v0      | Optimal  | Complex | ![][1-1]    |
+| **World 1-2**   | N/A     | N/A      | N/A     | N/A         |
+| **World 1-3**   | N/A     | N/A      | N/A     | N/A         |
+| **World 1-4**   | v0      | Optimal  | Simple  | ![][1-4]    |
 
 [1-1]: media/smb-1-1-complete.gif
+[1-4]: media/smb-1-4-complete.gif
 
 ### Legend
 The following is a legend of values to decipher the table above.
