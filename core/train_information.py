@@ -1,3 +1,6 @@
+from copy import copy
+
+
 class TrainInformation:
     def __init__(self):
         self._average = 0.0
@@ -7,6 +10,7 @@ class TrainInformation:
         self._average_range = 100
         self._index = 0
         self._new_best_counter = 0
+        self._saved_models = []
 
     @property
     def best_reward(self):
@@ -31,6 +35,23 @@ class TrainInformation:
 
     def update_best_counter(self):
         self._new_best_counter += 1
+
+    def _model_already_saved(self, new_model):
+        for model in self._saved_models:
+            if model == new_model:
+                return True
+        return False
+
+    def store_actions(self, action_list):
+        model_saved = self._model_already_saved(action_list)
+        if not model_saved:
+            # Create a copy of the action list to prevent it from being updated
+            # elsewhere, making it appear that any new models are replicas of
+            # existing ones, even when they are unique.
+            copied_list = copy(action_list)
+            self._saved_models.append(copied_list)
+        # We want to update if the model has NOT been saved
+        return not model_saved
 
     def _update_best_reward(self, episode_reward):
         if episode_reward > self.best_reward:

@@ -44,7 +44,7 @@ def record_best_run(model, args, episode):
 
 
 def complete_episode(environment, info, episode_reward, episode, stats, model,
-                     flag, args):
+                     flag, args, action_list):
     best = info.best_reward
     new_best = info.update_rewards(episode_reward)
     save_model = False
@@ -55,9 +55,9 @@ def complete_episode(environment, info, episode_reward, episode, stats, model,
     elif new_best:
         print('New best average reward of %s! Saving model'
               % round(info.best_average, 3))
-    if flag and best != episode_reward:
+    if flag:
+        save_flag = info.store_actions(action_list)
         save_model = True
-        save_flag = True
     if save_model:
         record_best_run(model, args, episode)
         torch.save(model.state_dict(),
@@ -75,7 +75,7 @@ def complete_episode(environment, info, episode_reward, episode, stats, model,
 
 
 def test_loop(env, model, global_model, actions, state, done, args, info,
-              episode_reward, hx, cx):
+              episode_reward, hx, cx, action_list):
     flag = False
     if done:
         model.load_state_dict(global_model.state_dict())
@@ -94,6 +94,7 @@ def test_loop(env, model, global_model, actions, state, done, args, info,
         env.render()
     episode_reward += reward
     actions.append(action)
+    action_list.append(action)
     if stats['flag_get']:
         print('Reached the flag!')
         flag = True
@@ -101,9 +102,10 @@ def test_loop(env, model, global_model, actions, state, done, args, info,
         done = True
         info.update_index()
         complete_episode(args.environment, info, episode_reward, info.index,
-                         stats, model, flag, args)
+                         stats, model, flag, args, action_list)
         episode_reward = 0.0
         actions.clear()
+        action_list.clear()
         next_state = env.reset()
     state = torch.from_numpy(next_state)
     return model, hx, cx, state, done, info, episode_reward
@@ -122,8 +124,10 @@ def test(env, global_model, args):
     hx = None
     cx = None
     actions = deque(maxlen=args.max_actions)
+    action_list = []
 
     while True:
         loop_outputs = test_loop(env, model, global_model, actions, state,
-                                 done, args, info, episode_reward, hx, cx)
+                                 done, args, info, episode_reward, hx, cx,
+                                 action_list)
         model, hx, cx, state, done, info, episode_reward = loop_outputs
