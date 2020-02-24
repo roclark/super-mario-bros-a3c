@@ -149,7 +149,7 @@ and the settings used to achieve the indicated performance:
 | **World 1-3**   | N/A     | N/A      | N/A     | N/A         |
 | **World 1-4**   | v0      | Optimal  | Simple  | ![][1-4]    |
 | **World 2-1**   | v0      | Optimal  | Simple  | ![][2-1]    |
-| **World 2-2**   | N/A     | N/A      | N/A     | N/A         |
+| **World 2-2**   | v0      | Optimal  | Simple  | ![][2-2]    |
 | **World 2-3**   | v0      | Optimal  | Simple  | ![][2-3]    |
 | **World 2-4**   | v0      | Optimal  | Simple  | ![][2-4]    |
 | **World 3-1**   | v0      | Optimal  | Simple  | ![][3-1]    |
@@ -178,6 +178,7 @@ and the settings used to achieve the indicated performance:
 [1-1]: media/smb-1-1-complete.gif
 [1-4]: media/smb-1-4-complete.gif
 [2-1]: media/smb-2-1-complete.gif
+[2-2]: media/smb-2-2-complete.gif
 [2-3]: media/smb-2-3-complete.gif
 [2-4]: media/smb-2-4-complete.gif
 [3-1]: media/smb-3-1-complete.gif
