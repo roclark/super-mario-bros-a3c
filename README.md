@@ -169,8 +169,9 @@ and the settings used to achieve the indicated performance:
 | **World 6-3**   | v0      | Optimal  | Simple  | ![][6-3]    |
 | **World 6-4**   | v0      | Optimal  | Simple  | ![][6-4]    |
 | **World 7-1**   | v0      | Optimal  | Simple  | ![][7-1]    |
-| **World 7-2**   | N/A     | N/A      | N/A     | N/A         |
+| **World 7-2**   | v0      | Optimal  | Simple  | ![][7-2]    |
 | **World 7-3**   | v0      | Optimal  | Simple  | ![][7-3]    |
+| **World 7-4**   | N/A     | N/A      | N/A     |             |
 | **World 8-1**   | v0      | Optimal  | Simple  | ![][8-1]    |
 | **World 8-2**   | v0      | Optimal  | Simple  | ![][8-2]    |
 | **World 8-3**   | v0      | Optimal  | Simple  | ![][8-3]    |
@@ -194,6 +195,7 @@ and the settings used to achieve the indicated performance:
 [6-3]: media/smb-6-3-complete.gif
 [6-4]: media/smb-6-4-complete.gif
 [7-1]: media/smb-7-1-complete.gif
+[7-2]: media/smb-7-2-complete.gif
 [7-3]: media/smb-7-3-complete.gif
 [8-1]: media/smb-8-1-complete.gif
 [8-2]: media/smb-8-2-complete.gif
