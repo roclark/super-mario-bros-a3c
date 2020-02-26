@@ -166,7 +166,7 @@ and the settings used to achieve the indicated performance:
 | **World 5-4**   | v0      | Optimal  | Simple  | ![][5-4]    |
 | **World 6-1**   | v0      | Optimal  | Simple  | ![][6-1]    |
 | **World 6-2**   | v0      | Optimal  | Simple  | ![][6-2]    |
-| **World 6-3**   | N/A     | N/A      | N/A     | N/A         |
+| **World 6-3**   | v0      | Optimal  | Simple  | ![][6-3]    |
 | **World 6-4**   | v0      | Optimal  | Simple  | ![][6-4]    |
 | **World 7-1**   | N/A     | N/A      | N/A     | N/A         |
 | **World 7-2**   | N/A     | N/A      | N/A     | N/A         |
@@ -187,6 +187,7 @@ and the settings used to achieve the indicated performance:
 [5-4]: media/smb-5-4-complete.gif
 [6-1]: media/smb-6-1-complete.gif
 [6-2]: media/smb-6-2-complete.gif
+[6-3]: media/smb-6-3-complete.gif
 [6-4]: media/smb-6-4-complete.gif
 [7-3]: media/smb-7-3-complete.gif
 
