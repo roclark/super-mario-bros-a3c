@@ -173,6 +173,7 @@ and the settings used to achieve the indicated performance:
 | **World 7-3**   | v0      | Optimal  | Simple  | ![][7-3]    |
 | **World 8-1**   | N/A     | N/A      | N/A     | N/A         |
 | **World 8-2**   | v0      | Optimal  | Simple  | ![][8-2]    |
+| **World 8-3**   | v0      | Optimal  | Simple  | ![][8-3]    |
 
 [1-1]: media/smb-1-1-complete.gif
 [1-4]: media/smb-1-4-complete.gif
@@ -194,6 +195,7 @@ and the settings used to achieve the indicated performance:
 [7-1]: media/smb-7-1-complete.gif
 [7-3]: media/smb-7-3-complete.gif
 [8-2]: media/smb-8-2-complete.gif
+[8-3]: media/smb-8-3-complete.gif
 
 ### Legend
 The following is a legend of values to decipher the table above.
